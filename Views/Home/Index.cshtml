@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Welcome</h1>
+    <p>We're going to generate some islands, with a range of soil- and water types!</p>
+
+    <ul>
+        <li>🌊 = Salt water</li>
+        <li>💧 = Fresh water</li>
+        <li>🍄‍ = Loam</li>
+        <li>🌱 = Silt</li>
+        <li>🌴 = Sand</li>
+        <li>🌸 = Clay</li>
+    </ul>
+
+    <p>
+        @{
+            String toPrint = new String("");
+            var island = new Island();
+            List<List<Cell>> newIsland =  island.Generate(20);
+            foreach (List<Cell> row in newIsland)
+            {
+                foreach (Cell cell in row)
+                {
+                    //toPrint = String.Concat(toPrint + cell.id);
+                    toPrint = String.Concat(toPrint + cell.icon);
+                }
+                toPrint = toPrint + "<br/>";
+            }
+        }
+        @Html.Raw(toPrint)
+    </p>
+</div>
